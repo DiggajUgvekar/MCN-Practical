@@ -25,12 +25,14 @@ struct Packet {
 
 // Function to simulate transmission delay
 void delay(int milliseconds) {
-    clock_t start = clock();
+    clock_t start = clock(); //current processer time
     while ((clock() - start) * 1000 / CLOCKS_PER_SEC < milliseconds);
 }
 
 // Function to simulate ACK/NACK loss
 bool isAckLost() {
+//     if the random number is less than ACK_LOSS_PROBABILITY, it returns true, indicating that the ACK is lost.
+// Otherwise, it returns false, indicating that the ACK is not lost.
     return (rand() / (RAND_MAX + 1.0)) < ACK_LOSS_PROBABILITY;
 }
 

@@ -2,8 +2,11 @@
 #include <string>
 using namespace std;
 
+//C is for carry , b_size for block size to take
 int C = 0, b_size;
 string output;
+
+//binary addition
 char add(char a, char b) {
     if (C == 0 && (a == '1' && b == '1')) //0 1 1
     {
@@ -42,7 +45,7 @@ void complement() {
     }
 }
 
-void compute_sum(string data) {
+void compute_checksum(string data) {
     string temp;
     output = data.substr(0, b_size);
 
@@ -62,6 +65,7 @@ void compute_sum(string data) {
             }
         }
     }
+    //complement the sum to get the checksum
     complement();
 }
 
@@ -77,7 +81,7 @@ int main() {
             cin >> data;
             cout << "Enter block size: ";
             cin >> b_size;
-            compute_sum(data);
+            compute_checksum(data);
             cout << "The checksum is: " << output << "\n";
 
             // Append the checksum to the data
@@ -90,18 +94,19 @@ int main() {
             cout << "Enter block size: ";
             cin >> b_size;
 
-            compute_sum(data);
-            data = data.substr(0, data.length() - b_size);
+            compute_checksum(data);
+            data = data.substr(0, data.length() - b_size); //remove checksum
             one = "1";
+            //find any 1 to check errors
             found = output.find(one);
-            if (found == string::npos) //0000
+            if (found == string::npos) //0000   //npos means not found
             {
-                cout << "\nNo error present \nComplement of sum is  " << output;
+                cout << "\nNo error present \nComplement of checksum is  " << output;
                 cout << "\nActual data is  " << data << "\n";
             } else //0010
             {
                 cout << "Error present in code \n";
-                cout << "\nComplement of sum is  " << output;
+                cout << "\nComplement of checksum is  " << output;
                 cout << "\nSince complement is not equal to 0 error is present\n\n";
             }
             break;

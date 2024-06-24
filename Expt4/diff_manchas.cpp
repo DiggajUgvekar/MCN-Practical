@@ -7,7 +7,9 @@ int main()
     char a[200];
     cout << "Enter the String: ";
     cin >> a;
-    int pos=0; //0 = low and 1 ==high
+    int pos=0; //0 = low and 1 ==high (previous position)
+
+    // 0 means change transition, 1 means retain the transition
     cout<<endl;
     for (int i = 0; a[i] != '\0'; ++i) {
         char currentChar = a[i];

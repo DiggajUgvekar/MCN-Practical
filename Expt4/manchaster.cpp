@@ -29,7 +29,7 @@ int main()
     }
     cout<<endl;
 
-    // if 0 the low and 1 then high
+    // if 0 then low and 1 then high
     for (int i = 0; a[i] != '\0'; ++i) {
         char currentChar = a[i];
         if(currentChar == '0'){
