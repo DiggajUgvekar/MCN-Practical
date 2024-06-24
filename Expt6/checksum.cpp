@@ -47,15 +47,18 @@ void complement() {
 
 void compute_checksum(string data) {
     string temp;
+    // first num to add
     output = data.substr(0, b_size);
 
     for (int i = b_size; i < data.length(); i += b_size) {
-        int x = 0;
+        //second num to add
         temp = data.substr(i, b_size);
 
+        // loop through to add indivdual digit
         for (int k = b_size - 1; k >= 0; k--)
             output[k] = add(output[k], temp[k]);
 
+        //if any carry then add it to the output
         if (C == 1) {
             for (int k = b_size - 1; k >= 0; k--) {
                 if (C == 1) {
@@ -107,7 +110,7 @@ int main() {
             {
                 cout << "Error present in code \n";
                 cout << "\nComplement of checksum is  " << output;
-                cout << "\nSince complement is not equal to 0 error is present\n\n";
+                cout << "\nSince complement is not equal to 0, error is present\n\n";
             }
             break;
         case 3:

@@ -1,6 +1,7 @@
 #include<iostream>
 using namespace std;
 
+//XOR OPERATION  
 string xor1(string a, string b) {
   string result = "";
   int n = b.length();
@@ -53,9 +54,11 @@ void receiver(string data, string key) {
   string remainder = mod2div(data, key);
 
   if (remainder.find('1') != string::npos) {
+    //if one is found
     cout << "There is some error in data" << endl;
   } 
   else {
+    //if remainder.find('1') == string::npos    that is 1 is not found then correct message
     cout << "Correct message received" << endl;
   }}
 
@@ -64,9 +67,12 @@ int main() {
   cout << "Sender side" << endl;
   cout << "Enter the Data" << endl;
   cin >> data;
+
   cout << "Enter the Generator" << endl;
   cin >> key;
+
   encodeData(data, key);
+
   cout << "\nReceiver side" << endl;
   cout << "Enter the Data Which is received" << endl;
   cin >> data;
